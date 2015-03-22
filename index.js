@@ -37,8 +37,6 @@ var argv = require('yargs')
   .argv
 ;
 
-console.log(argv._);
-
 // Selector is the first token.
 var selectors = argv._.shift();
 
