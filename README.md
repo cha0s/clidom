@@ -1,3 +1,13 @@
+# Parse a DOM from the command line
+
+## Installation
+
+```bash
+npm install clidom
+```
+
+## Usage
+
 ```bash
 Usage: clidom selector [URL] [options]
 
