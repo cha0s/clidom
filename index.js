@@ -25,6 +25,7 @@ var argv = require('yargs')
 
   .describe('p', 'Pretty JSON output')
   .boolean('p')
+  .default('p', true)
   .alias('p', 'pretty')
 
   .describe('t', 'Trim empty results')

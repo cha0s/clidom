@@ -20,7 +20,8 @@ clidom selector [URL] [options]
 
 ```bash
 -o, --out-file  File to write JSON output              [default: '-' (stdout)]
--p, --pretty    Pretty JSON output
+-p, --pretty    Pretty JSON output                             [default: true]
+-t, --trim      Trim empty results                             [default: true]
 -h, --help      Show help
 ```
 
@@ -29,7 +30,7 @@ clidom selector [URL] [options]
 Output a pretty JSON object of button labels on http://www.google.com:
 
 ```bash
-clidom -p input[type="submit"]::[value] https://www.google.com
+clidom input[type="submit"]::[value] https://www.google.com
 ```
 
 Output:
@@ -50,7 +51,7 @@ Output:
 Output a pretty JSON object of Twitter usernames talking about node.js:
 
 ```bash
-clidom -p 'span.username b' 'https://twitter.com/search?f=realtime&q=node.js'
+clidom 'span.username b' 'https://twitter.com/search?f=realtime&q=node.js'
 ```
 
 Output: (will vary over time)
