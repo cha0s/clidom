@@ -95,3 +95,35 @@ Output: (will vary over time)
   ]
 }
 ```
+
+You can of course use this with ny other UNIX application, for instance if we
+wanted to remove all the wrapping JSON, we could do this:
+
+```
+clidom 'span.username b' 'https://twitter.com/search?f=realtime&q=node.js' | jq '.[] | .[]' | tr -d \"
+```
+
+We'd simply get the strings of the users, e.g.:
+
+```
+hashedrock
+mashupaward
+orangesuzuki
+RJ_Hsiao
+mongodbExpert
+JanilsonPy
+npm_tweets
+nodenpm
+npm_tweets
+StrongLoop
+DevelopersDojo
+adstweetbot
+Johnny_Rehab
+jramonleon
+questionjs
+AsadNomanMS
+amit_intelli
+rekkuuzadx
+npm_tweets
+adstweetbot
+```
