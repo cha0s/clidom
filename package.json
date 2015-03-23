@@ -1,6 +1,6 @@
 {
   "name": "clidom",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Parse a DOM from the command line",
   "main": "index.js",
   "repository": "https://github.com/cha0s/clidom",

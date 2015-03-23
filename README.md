@@ -96,7 +96,7 @@ Output: (will vary over time)
 }
 ```
 
-You can of course use this with ny other UNIX application, for instance if we
+You can of course use this with any other UNIX application, for instance if we
 wanted to remove all the wrapping JSON, we could do this:
 
 ```
