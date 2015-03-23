@@ -7,7 +7,7 @@ to do it for you? Enter clidom!
 ## Installation
 
 ```bash
-npm install clidom
+npm install -g clidom
 ```
 
 ## Usage
@@ -50,7 +50,7 @@ Output:
 Output a pretty JSON object of Twitter usernames talking about node.js:
 
 ```bash
-clidom --pretty 'span.username b' 'https://twitter.com/search?f=realtime&q=node.js'
+clidom -p 'span.username b' 'https://twitter.com/search?f=realtime&q=node.js'
 ```
 
 Output: (will vary over time)
