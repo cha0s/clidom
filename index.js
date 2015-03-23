@@ -36,7 +36,9 @@ var argv = require('yargs')
   .help('h')
   .alias('h', 'help')
 
-  .epilog('See https://github.com/cha0s/clidom for examples')
+  .epilog(
+    'See https://github.com/cha0s/clidom for examples and documentation.'
+  )
 
   .showHelpOnFail(false, "Specify --help for available options")
   .argv
@@ -92,9 +94,19 @@ function processDom(string) {
 
         switch (subselector) {
 
-          // Return outer HTML instead of inner.
+          // Return inner HTML.
+          case 'innerHtml':
+            value = $(element).html();
+            break;
+
+          // Return outer HTML.
           case 'outerHtml':
             value = $.html(element);
+            break;
+
+          // Return text (strip tags).
+          case 'text':
+            value = $(element).text();
             break;
 
           // It's a CSS selector.
