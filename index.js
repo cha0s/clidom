@@ -8,7 +8,6 @@ var request = require('request');
 
 var argv = require('yargs')
   .usage('Usage: $0 selector [URL] [options]')
-  .example('$0 a http://www.google.com', 'output a json object of all the links on http://www.google.com to stdout')
 
   // Make sure a CSS selector is specified.
   .check(function(argv) {
@@ -28,10 +27,15 @@ var argv = require('yargs')
   .boolean('p')
   .alias('p', 'pretty')
 
+  .describe('t', 'Trim empty results')
+  .boolean('t')
+  .default('t', true)
+  .alias('t', 'trim')
+
   .help('h')
   .alias('h', 'help')
 
-  .epilog('See: https://github.com/cha0s/clidom')
+  .epilog('See https://github.com/cha0s/clidom for examples')
 
   .showHelpOnFail(false, "Specify --help for available options")
   .argv
@@ -84,28 +88,43 @@ function processDom(string) {
 
       // Subselector used to extract parts from matched elements.
       if (subselector) {
-        var parsed = cssWhat(subselector);
-        for (var j in parsed) {
-          var parsedSelector = parsed[j];
-          for (var k in parsedSelector) {
-            var what = parsedSelector[k];
 
-            // Attribute selector? Extract the attribute value.
-            switch (what.type) {
-              case 'attribute':
-                value[what.name] = $(element).attr(what.name);
-                break;
+        switch (subselector) {
+
+          // Return outer HTML instead of inner.
+          case 'outerHtml':
+            value = $.html(element);
+            break;
+
+          // It's a CSS selector.
+          default:
+
+            var parsed = cssWhat(subselector);
+            for (var j in parsed) {
+              var parsedSelector = parsed[j];
+              for (var k in parsedSelector) {
+                var what = parsedSelector[k];
+
+                // Attribute selector? Extract the attribute value.
+                switch (what.type) {
+                  case 'attribute':
+                    value[what.name] = $(element).attr(what.name);
+                    break;
+                }
+              }
             }
-          }
         }
       }
 
-      // Otherwise, take the outer HTML of the selected elements.
+      // Otherwise, take the inner HTML of the selected elements.
       else {
-        value = $.html(element);
+        value = $(element).html();
       }
 
-      values.push(value);
+      // Push the value unless trimming and it's empty.
+      if (!argv.t || value) {
+        values.push(value);
+      }
     })
   }
 
