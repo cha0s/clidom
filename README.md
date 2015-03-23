@@ -16,7 +16,7 @@ npm install clidom
 clidom selector [URL] [options]
 ```
 
-# Options
+## Options
 
 ```bash
 -o, --out-file  File to write JSON output              [default: '-' (stdout)]
@@ -24,7 +24,7 @@ clidom selector [URL] [options]
 -h, --help      Show help
 ```
 
-# Examples
+## Examples
 
 Output a pretty JSON object of button labels on http://www.google.com:
 
