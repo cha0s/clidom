@@ -24,10 +24,10 @@ clidom extends selector syntax to allow you to not only select elements, but
 mutate the elements as needed. clidom provides the following syntax for
 subselectors:
 
-- (default) `innerHtml` - Returns the element's inner HTML
-- `outerHtml`           - Returns the element's outer HTML
-- `text`                - Returns the text inside the element, stripping tags
-- `[attribute]`         - Returns the value of the specified attribute
+- `innerHtml` - Returns the element's inner HTML (default)
+- `outerHtml` - Returns the element's outer HTML
+- `text` - Returns the text inside the element, stripping tags
+- `[attribute]` - Returns the value of the specified attribute
 
 ## Options
 
